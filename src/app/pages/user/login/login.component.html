@@ -1,0 +1,16 @@
+<form  class="card flex justify-content-center align-items-center h-screen">
+    <div class="flex flex-column gap-2 grid md:w-6 w-12">
+        
+        <p class="text-2xl w-12 font-semibold">My Cafeteria</p>
+
+        <label htmlFor="username">Username</label>
+        <input pInputText id="username" aria-describedby="username-help" formControlName="username"/>
+
+        <label htmlFor="password">Password</label>
+        <p-password [feedback]="false" [toggleMask]="true" inputStyleClass="w-12" styleClass="w-12" formControlName="password"></p-password>
+
+        <!-- <small *ngIf="fail" class="text-red-500">Incorrect username or password</small> -->
+        <p-button label="Login" type="submit" ></p-button>
+
+    </div>
+</form>
