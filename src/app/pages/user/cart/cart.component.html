@@ -1,0 +1,36 @@
+<app-navbar></app-navbar>
+
+<div class="card">
+    <div>
+        Shopping Cart
+    </div>
+    <div class="grid">
+        <div class="col-3">
+            <img src="https://primefaces.org/cdn/primeng/images/usercard.png" class="w-full"/>
+        </div>
+        <div class="col-2">
+            <div>Mushroom Soup</div>
+        </div>
+        <div class="col-2">
+            <div>50000</div>
+        </div>
+        <div class="col-2">
+            <p-inputNumber
+                styleClass="w-12"
+                inputStyleClass="w-12"
+                [showButtons]="true"
+                buttonLayout="horizontal"
+                inputId="horizontal"
+                spinnerMode="horizontal"
+                [step]="1"
+                [min]="1"
+                incrementButtonIcon="pi pi-plus"
+                decrementButtonIcon="pi pi-minus"
+            ></p-inputNumber>
+        </div>
+    </div>
+
+    <div>
+        <p-button label="Checkout"></p-button>
+    </div>
+</div>

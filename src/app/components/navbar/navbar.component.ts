@@ -13,7 +13,7 @@ export class NavbarComponent {
       {
           label: 'Cart',
           icon: 'pi pi-fw pi-shopping-cart',
-          
+          routerLink: '/cart'
       }
   ];
   }

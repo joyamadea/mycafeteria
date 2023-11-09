@@ -17,6 +17,7 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
 import { ProductDetailComponent } from './pages/menu/product-detail/product-detail.component';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { FormsModule } from '@angular/forms';
+import { CartComponent } from './pages/user/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     HomeComponent,
     NavbarComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
