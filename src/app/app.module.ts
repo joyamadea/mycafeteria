@@ -14,13 +14,17 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import { CardModule } from 'primeng/card';
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
+import { ProductDetailComponent } from './pages/menu/product-detail/product-detail.component';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,9 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
     TabMenuModule,
     CardModule,
     AvatarModule,
-    AvatarGroupModule
+    AvatarGroupModule,
+    InputNumberModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

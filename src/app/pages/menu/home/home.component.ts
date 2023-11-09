@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +15,10 @@ export class HomeComponent {
   products: any;
 
   search: any;
+
+  constructor(
+    private router: Router
+  ) {}
 
   ngOnInit() {
       this.items = [
@@ -83,5 +88,6 @@ export class HomeComponent {
 
   productClick(id: any) {
     console.log('id', id);
+    this.router.navigateByUrl('/product/'+id);
   }
 }
