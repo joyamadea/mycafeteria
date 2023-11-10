@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from 'src/app/shared/services/products.service';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import { CartService } from 'src/app/shared/services/cart.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
-  styleUrls: ['./product-detail.component.scss']
+  styleUrls: ['./product-detail.component.scss'],
+  providers: [MessageService]
 })
 export class ProductDetailComponent {
   detail!: any;
@@ -19,7 +21,9 @@ export class ProductDetailComponent {
   constructor(
     private productService: ProductsService,
     private cartService: CartService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private messageService: MessageService,
+    private router: Router
   ) {
     this.activatedRoute.paramMap.subscribe((params: any) => {
       this.id = params.get('id');
@@ -47,5 +51,9 @@ export class ProductDetailComponent {
     }
 
     this.cartService.addToCart(tempItem);
+    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Added to Cart' });
+    setTimeout(() => {
+      this.router.navigateByUrl('');
+    }, 1000)
   }
 }

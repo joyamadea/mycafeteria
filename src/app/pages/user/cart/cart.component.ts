@@ -1,3 +1,4 @@
+import { MessageService } from 'primeng/api';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import * as dayjs from 'dayjs';
@@ -7,7 +8,8 @@ import { ProductsService } from 'src/app/shared/services/products.service';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss']
+  styleUrls: ['./cart.component.scss'],
+  providers: [MessageService]
 })
 export class CartComponent {
   orders: any;
@@ -27,7 +29,8 @@ export class CartComponent {
   constructor(
     private productService: ProductsService,
     private cartService: CartService,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) {}
 
   ngOnInit() {
@@ -68,11 +71,14 @@ export class CartComponent {
     temp.status = "IN PROGRESS";
     temp.userId = localStorage.getItem("userId");
 
-    console.log('carts', temp);
     this.cartService.addOrder(temp);
     this.checkoutFlag = true;
     localStorage.removeItem("cart");
-    // this.router.navigateByUrl('checkout', this.carts);
+    
+    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Order has been placed' });
+    setTimeout(() => {
+      this.router.navigateByUrl('/order');
+    }, 1000)
   }
 
   ngOnDestroy() {

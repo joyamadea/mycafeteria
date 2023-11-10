@@ -23,6 +23,8 @@ import { DropdownModule } from 'primeng/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OrdersComponent } from './pages/user/orders/orders.component';
 import { CurrencyPipe } from '@angular/common';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { CurrencyPipe } from '@angular/common';
     HttpClientModule,
     DropdownModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastModule,
+    ConfirmDialogModule
   ],
   providers: [
     HttpClient,

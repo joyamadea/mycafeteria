@@ -1,8 +1,10 @@
 <p-menubar [model]="items" >
+    
     <ng-template pTemplate="end" class="align-items-center flex">
         <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" styleClass="mr-2" size="large" shape="circle" (click)="goToOrders()" class="for-hover">
             <!-- <span onclick=""></span> -->
         </p-avatar>
-        <p-button label="Log Out" (onClick)="logout()"></p-button>
+        <p-button label="Log Out" (onClick)="confirmLogout()"></p-button>
     </ng-template>
 </p-menubar>
+<p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>

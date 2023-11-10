@@ -1,16 +1,17 @@
 <app-navbar></app-navbar>
 
-<div class="card grid nested-grid flex m-8" *ngIf="detail">
-    <div class="col-6">
-        <img [src]="detail.imageURL"/>
+<div class="card grid nested-grid flex md:m-8 m-2" *ngIf="detail">
+    <p-toast></p-toast>
+    <div class="md:col-6 col-12">
+        <img [src]="detail.imageURL" class="max-w-full"/>
     </div>
-    <div class="col-6">
+    <div class="md:col-6 col-12">
         <div class="grid">
             <div class="col-12 font-semibold text-large">{{ detail.name }}</div>
             <div class="col-12">{{ detail.category }}</div>
             <div class="col-12">{{ detail.description }}</div>
             <div class="col-12">{{ detail.price | currency: 'IDR' }}</div>
-            <div class="col-3">
+            <div class="md:col-5 col-12">
                 <p-inputNumber
                     [(ngModel)]="value"
                     styleClass="w-12"
@@ -27,5 +28,8 @@
             </div>
         </div>
     </div>
-    <p-button label="Add to Cart" (onClick)="addToCart()"></p-button>
+    <div class="text-align-right mr-5 mb-5 flex justify-content-end col-12">
+        <p-button label="Add to Cart" (onClick)="addToCart()"></p-button>
+    </div>
+    
 </div>
