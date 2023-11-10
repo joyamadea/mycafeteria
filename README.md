@@ -22,7 +22,9 @@ Click on 'Place an Order' to be redirected to orders page
 
 5. Orders Page
 ![orders page](https://i.imgur.com/u6AoAOL.png)
-This page displays completed and ongoing orders.
+This page displays completed and ongoing orders. You can also access this page by clicking on the avatar icon on the top right corner beside the Log Out button.
+
+By logging out, all cart and order data will be erased.
 
 Considered features:
 
