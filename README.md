@@ -1,3 +1,41 @@
+There are 5 pages in this application.
+
+A normal user flow would be login -> click on a product -> add to cart -> see cart -> checkout -> view order
+Frontend is hosted in [here](https://mycafeteria.vercel.app/) with backend is hosted in `https://backend-mycafeteria.onrender.com` and database hosted on Clever Cloud
+
+1. Login Page
+![login page](https://imgur.com/3mEUPhb)
+Currently the login page only supports dummy data with **Username**: john.doe **Password**: 123456
+
+2. Product Page
+![product page](https://imgur.com/vuFQZw3)
+This page uses API to display product and product detail. User can filter based on category. Click on a product to open product detail page
+
+3. Product Detail Page
+![product detail page](https://imgur.com/NUIAxWJ)
+This page uses API to get product detail. Use the buttons to increase/decrease quantity to add to cart. Click 'Add to Cart' to add the product to cart.
+
+4. Cart Page
+![cart page](https://imgur.com/szSxvr4)
+This page uses localstorage to keep the cart contents. User can see the total amount needed to be paid and user can pick a payment method.
+Click on 'Place an Order' to be redirected to orders page
+
+5. Orders Page
+![orders page](https://imgur.com/u6AoAOL)
+This page displays completed and ongoing orders.
+
+Considered features:
+
+- Register/Sign Up
+- Product search and filter with backend
+- Product availability validation
+- Customizable orders
+    - Adding radio buttons/checkboxes in product detail page to add customization (ex: Exchange rice to fries)
+    - Add notes to order
+- Validation for cart if product is 0
+- Delete from cart
+- Kitchen/restaurant side to indicate whether an order has been completed
+
 # MyCafeteria
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.

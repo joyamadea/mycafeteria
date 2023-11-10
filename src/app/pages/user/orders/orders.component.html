@@ -4,7 +4,7 @@
     <div class="text-2xl font-semibold m-5 flex">
         Orders
     </div>
-    <div class="grid flex w-screen  m-2">
+    <div class="grid flex w-screen  m-2" *ngIf="orderDetails">
         <div class="col-12 flex justify-content-center min-w-screen" *ngFor="let cart of orderDetails">
             <div class="grid card border-solid border-200">
                 <div class="col-8 grid">
@@ -29,9 +29,11 @@
                 </div>
             </div>
         </div>
-
+        
+    </div>
+    <div class="grid flex w-screen m-2" *ngIf="!orderDetails">
         <div class="col-12 flex justify-content-center min-w-screen">
-            No orders have been made
+            No order has been made
         </div>
         
     </div>
