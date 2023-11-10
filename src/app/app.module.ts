@@ -18,6 +18,7 @@ import { ProductDetailComponent } from './pages/menu/product-detail/product-deta
 import { InputNumberModule } from 'primeng/inputnumber';
 import { FormsModule } from '@angular/forms';
 import { CartComponent } from './pages/user/cart/cart.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -40,9 +41,10 @@ import { CartComponent } from './pages/user/cart/cart.component';
     AvatarModule,
     AvatarGroupModule,
     InputNumberModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

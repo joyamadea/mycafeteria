@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProductsService } from 'src/app/shared/services/products.service';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,8 @@ export class HomeComponent {
   search: any;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private productService: ProductsService
   ) {}
 
   ngOnInit() {
@@ -29,61 +31,34 @@ export class HomeComponent {
           { label: 'Settings', icon: 'pi pi-fw pi-cog' }
       ];
 
-      this.categories = [
-        { id: 1, label: "All"},
-        { id: 2, label: "Appetizer"},
-        { id: 3, label: "Main Course"},
-        { id: 4, label: "Ala carte"},
-        { id: 5, label: "Dessert"},
-        // { id: 5, label: "Dessert"},
-        // { id: 5, label: "Dessert"},
-        // { id: 5, label: "Dessert"},
-        // { id: 5, label: "Dessert"},
-        // { id: 5, label: "Dessert"},
-        // { id: 5, label: "Dessert"},
-        // { id: 5, label: "Dessert"},
-        // { id: 5, label: "Dessert"},
-        // { id: 5, label: "Dessert"},
-        // { id: 5, label: "Dessert"},
-      ]
+      // this.categories = [
+      //   { id: 0, label: "All"},
+      //   { id: 1, label: "Appetizer"},
+      //   { id: 2, label: "Main Course"},
+      //   { id: 3, label: "Ala carte"},
+      //   { id: 4, label: "Dessert"},
+      // ]
 
+      this.getCategories();
+      this.getAllProducts();
+  }
+
+  getCategories() {
+    this.productService.getCategories().subscribe((res: any) => {
+      this.categories = [{id: 0, label: "All"}];
+      res.data.forEach((element: any) => {
+        this.categories.push({id: element.categoryID, label: element.name});
+      });
       this.activeItem = this.categories[0];
+    })
+  }
 
-
-      this.products = [
-        {
-          id: 1,
-          name: 'Mushroom Soup',
-          stock: 10,
-          image: 'https://primefaces.org/cdn/primeng/images/usercard.png',
-          description: 'Mushroom soup enak bet',
-          categoryId: 5
-        },
-        {
-          id: 2,
-          name: 'Mushroom Soup',
-          stock: 10,
-          image: 'https://primefaces.org/cdn/primeng/images/usercard.png',
-          description: 'Mushroom soup enak bet',
-          categoryId: 5
-        },
-        {
-          id: 3,
-          name: 'Mushroom Soup',
-          stock: 10,
-          image: 'https://primefaces.org/cdn/primeng/images/usercard.png',
-          description: 'Mushroom soup enak bet',
-          categoryId: 5
-        },
-        {
-          id: 3,
-          name: 'Mushroom Soup',
-          stock: 10,
-          image: 'https://primefaces.org/cdn/primeng/images/usercard.png',
-          description: 'Mushroom soup enak bet',
-          categoryId: 5
-        }
-      ]
+  getAllProducts() {
+    console.log('test');
+    this.productService.getAllProducts().subscribe((res: any) => {
+      this.products = res.data;
+      console.log('res', res);
+    })
   }
 
   productClick(id: any) {

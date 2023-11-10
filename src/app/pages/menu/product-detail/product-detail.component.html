@@ -1,14 +1,14 @@
 <app-navbar></app-navbar>
 
-<div class="card grid nested-grid flex m-8">
+<div class="card grid nested-grid flex m-8" *ngIf="detail">
     <div class="col-6">
-        <img [src]="detail.image"/>
+        <img [src]="detail.imageURL"/>
     </div>
     <div class="col-6">
         <div class="grid">
-            <div class="col-12">{{ detail.name }}</div>
+            <div class="col-12 font-semibold text-large">{{ detail.name }}</div>
+            <div class="col-12">{{ detail.category }}</div>
             <div class="col-12">{{ detail.description }}</div>
-            <div class="col-12">{{ detail.category.name }}</div>
             <div class="col-12">{{ detail.price | currency: 'IDR' }}</div>
             <div class="col-3">
                 <p-inputNumber

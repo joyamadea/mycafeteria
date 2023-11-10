@@ -1,36 +1,50 @@
 <app-navbar></app-navbar>
 
 <div class="card">
-    <div>
+    <div class="text-2xl font-semibold m-5 flex">
         Shopping Cart
     </div>
-    <div class="grid">
-        <div class="col-3">
-            <img src="https://primefaces.org/cdn/primeng/images/usercard.png" class="w-full"/>
+    <div class="grid flex w-screen  m-2">
+        <div class="col-12 flex justify-content-center min-w-screen" *ngFor="let cart of carts">
+            <div class="grid card border-solid border-200" *ngIf="cart.info">
+                <div class="md:col-3 col-12">
+                    <img [src]="cart.info.imageURL" class="w-full"/>
+                </div>
+                <div class="md:col-3 col-12">
+                    <div class="font-semibold">{{ cart.info.name }}</div>
+                </div>
+                <div class="md:col-2 col-12">
+                    <div>{{ cart.info.price | currency: 'IDR'}}</div>
+                </div>
+                <div class="md:col-2 col-6">
+                    <p-inputNumber
+                        [(ngModel)]="cart.amount"
+                        (ngModelChange)="onChangy()"
+                        styleClass="w-12"
+                        inputStyleClass="w-12"
+                        [showButtons]="true"
+                        buttonLayout="horizontal"
+                        inputId="horizontal"
+                        spinnerMode="horizontal"
+                        [step]="1"
+                        [min]="1"
+                        incrementButtonIcon="pi pi-plus"
+                        decrementButtonIcon="pi pi-minus"
+                    ></p-inputNumber>
+                </div>
+                <div class="md:col-2 col-12">
+                    <div>{{ cart.amount * cart.info.price | currency: 'IDR'}}</div>
+                </div>
+            </div>
         </div>
-        <div class="col-2">
-            <div>Mushroom Soup</div>
-        </div>
-        <div class="col-2">
-            <div>50000</div>
-        </div>
-        <div class="col-2">
-            <p-inputNumber
-                styleClass="w-12"
-                inputStyleClass="w-12"
-                [showButtons]="true"
-                buttonLayout="horizontal"
-                inputId="horizontal"
-                spinnerMode="horizontal"
-                [step]="1"
-                [min]="1"
-                incrementButtonIcon="pi pi-plus"
-                decrementButtonIcon="pi pi-minus"
-            ></p-inputNumber>
-        </div>
+        
     </div>
 
-    <div>
+    <div class="text-align-right mx-5 mt-5 mb-3 flex justify-content-end">
+        <b>Total:</b> &nbsp; {{ total | currency: 'IDR' }}
+    </div>
+
+    <div class="text-align-right mr-5 mb-5 flex justify-content-end">
         <p-button label="Checkout"></p-button>
     </div>
 </div>

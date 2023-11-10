@@ -8,9 +8,9 @@
     <div class="card flex justify-content-center grid mx-5 my-3">
         <!-- <input type="text" pInputText placeholder="Search" class="w-full"/> -->
         
-        <p-card class="md:col-4 col-12" [header]="product.name" *ngFor="let product of products" (click)="productClick(product.id)">
+        <p-card class="md:col-4 col-12" [header]="product.name" *ngFor="let product of products" (click)="productClick(product.productID)">
             <ng-template pTemplate="header">
-                <img alt="Card" [src]="product.image" />
+                <img alt="Card" [src]="product.imageURL" />
             </ng-template>
             <p>
                 {{ product.description }}
