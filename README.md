@@ -37,6 +37,7 @@ Considered features:
 - Validation for cart if product is 0
 - Delete from cart
 - Kitchen/restaurant side to indicate whether an order has been completed
+- Database structure for ordering items has been constructed in backend repo (database.sql)
 
 # MyCafeteria
 
