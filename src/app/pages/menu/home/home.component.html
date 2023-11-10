@@ -1,14 +1,14 @@
 <app-navbar></app-navbar>
 
 <div class="card">
-    <div class="card">
-        <p-tabMenu class="flex justify-content-center" [scrollable]="true" [model]="categories" [activeItem]="activeItem"></p-tabMenu>
+    <div class="card" *ngIf="categories">
+        <p-tabMenu class="flex justify-content-center" [scrollable]="true" [model]="categories" [activeItem]="activeItem" (activeItemChange)="changeActive($event)"></p-tabMenu>
     </div>
 
     <div class="card flex justify-content-center grid mx-5 my-3">
         <!-- <input type="text" pInputText placeholder="Search" class="w-full"/> -->
         
-        <p-card class="md:col-4 col-12" [header]="product.name" *ngFor="let product of products" (click)="productClick(product.productID)">
+        <p-card class="md:col-4 col-12 for-hover" [header]="product.name" [subheader]="transformCurrency(product.price)!" *ngFor="let product of products" (click)="productClick(product.productID)">
             <ng-template pTemplate="header">
                 <img alt="Card" [src]="product.imageURL" />
             </ng-template>

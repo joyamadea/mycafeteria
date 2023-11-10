@@ -1,3 +1,4 @@
+import { CurrencyPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductsService } from 'src/app/shared/services/products.service';
@@ -19,28 +20,18 @@ export class HomeComponent {
 
   constructor(
     private router: Router,
-    private productService: ProductsService
+    private productService: ProductsService,
+    private currencyPipe: CurrencyPipe
   ) {}
 
   ngOnInit() {
-      this.items = [
-          { label: 'Home', icon: 'pi pi-fw pi-home' },
-          { label: 'Calendar', icon: 'pi pi-fw pi-calendar' },
-          { label: 'Edit', icon: 'pi pi-fw pi-pencil' },
-          { label: 'Documentation', icon: 'pi pi-fw pi-file' },
-          { label: 'Settings', icon: 'pi pi-fw pi-cog' }
-      ];
-
-      // this.categories = [
-      //   { id: 0, label: "All"},
-      //   { id: 1, label: "Appetizer"},
-      //   { id: 2, label: "Main Course"},
-      //   { id: 3, label: "Ala carte"},
-      //   { id: 4, label: "Dessert"},
-      // ]
 
       this.getCategories();
       this.getAllProducts();
+  }
+
+  transformCurrency(curr: any) {
+    return this.currencyPipe.transform(curr, 'IDR');
   }
 
   getCategories() {
@@ -53,16 +44,27 @@ export class HomeComponent {
     })
   }
 
+  changeActive(event: any) {
+    if (event.id == 0) {
+      this.getAllProducts();
+    } else {
+      this.productService.getProductByCategory(event.id).subscribe({
+        next: ((res: any) => {
+          this.products = res.data;
+        }),
+        error: ((err) => console.log('err', err))
+      })
+    }
+    
+  }
+
   getAllProducts() {
-    console.log('test');
     this.productService.getAllProducts().subscribe((res: any) => {
       this.products = res.data;
-      console.log('res', res);
     })
   }
 
   productClick(id: any) {
-    console.log('id', id);
     this.router.navigateByUrl('/product/'+id);
   }
 }

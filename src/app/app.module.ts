@@ -19,6 +19,10 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { FormsModule } from '@angular/forms';
 import { CartComponent } from './pages/user/cart/cart.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { DropdownModule } from 'primeng/dropdown';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OrdersComponent } from './pages/user/orders/orders.component';
+import { CurrencyPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     HomeComponent,
     NavbarComponent,
     ProductDetailComponent,
-    CartComponent
+    CartComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
@@ -42,9 +47,14 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     AvatarGroupModule,
     InputNumberModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DropdownModule,
+    BrowserAnimationsModule
   ],
-  providers: [HttpClient],
+  providers: [
+    HttpClient,
+    CurrencyPipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
