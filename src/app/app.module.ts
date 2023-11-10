@@ -16,7 +16,7 @@ import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
 import { ProductDetailComponent } from './pages/menu/product-detail/product-detail.component';
 import { InputNumberModule } from 'primeng/inputnumber';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CartComponent } from './pages/user/cart/cart.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DropdownModule } from 'primeng/dropdown';
@@ -49,7 +49,8 @@ import { CurrencyPipe } from '@angular/common';
     FormsModule,
     HttpClientModule,
     DropdownModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   providers: [
     HttpClient,

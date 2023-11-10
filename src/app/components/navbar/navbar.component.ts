@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +11,8 @@ export class NavbarComponent {
   items: any;
   
   constructor(
-    private router: Router
+    private router: Router,
+    private user: UserService
   ) {}
 
   ngOnInit() {
@@ -30,5 +32,10 @@ export class NavbarComponent {
 
   goToOrders() {
     this.router.navigateByUrl('/order');
+  }
+
+  logout() {
+    this.user.logout();
+    this.router.navigateByUrl('/login');
   }
 }

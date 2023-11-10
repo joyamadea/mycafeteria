@@ -36,7 +36,6 @@ export class CartComponent {
 
   async getCart() {
     let result = await this.cartService.getCart();
-    console.log('res', result);
     this.orders = {data: result};
     result.forEach((element: any) => {
       this.productService.getProductDetail(element.id).subscribe({
@@ -47,8 +46,6 @@ export class CartComponent {
       })
     });
     this.carts = result;
-
-    console.log('s', this.orders, this.carts);
   }
 
   onChangy() {
@@ -69,7 +66,7 @@ export class CartComponent {
     //for local storage only
     temp.createdAt = dayjs(new Date()).format('YYYY-MM-DD HH:mm:ss');
     temp.status = "IN PROGRESS";
-
+    temp.userId = localStorage.getItem("userId");
 
     console.log('carts', temp);
     this.cartService.addOrder(temp);
